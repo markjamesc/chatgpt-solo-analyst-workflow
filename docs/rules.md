@@ -10,3 +10,7 @@
 8. Repair cap of 3 per defect, then escalate with problems, a recommendation, and a batched revision.
 9. Large outputs come in parts, with assembly and a log.
 10. No push to `main` without one owner approval.
+11. If the chat cannot run R, it emits the script and waits; the operator runs it unchanged in a recorded environment. Never invent results.
+12. A script is done only when every sealed fixture passes in the declared R and package baseline.
+13. Reject a reply with a blank produced-files list. Never send a packet that still contains template text.
+14. The owner approves the sealed finish package before scoring. That is not an official Finish lock.

@@ -16,6 +16,14 @@ The live work is one ChatGPT chat. Errors that this model family tends to make c
 
 If the same chat writes both the R analysis and a SELECT-only SQL computation, agreement between them is a consistency check, not independent confirmation. Do not describe it as a two-analyst or two-family result.
 
+## Operator-run execution
+
+If the chat has no R runtime, the operator runs the chat's script unchanged and returns the raw output. The operator is not an author: it does not edit the code, choose methods, or interpret results. The run record must say that execution was operator-run and name the R and package versions used. Results depend on that declared environment.
+
+## Owner finish approval
+
+The owner approves the sealed finish package before scoring. That approval lets the run be scored as finished. It is still **not** an official Finish lock.
+
 ## What this version can still be scored on
 
 Accuracy against the private key, after the freeze, by a scorer who was not the live chat. Time, operator effort, usage, and cost. Completeness of the process record. Those scores are useful. They are not a claim of general superiority, and they are not an official lock.
