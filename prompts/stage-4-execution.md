@@ -18,6 +18,15 @@ Write the analysis specified by the sealed design.
 - Do not see or ask for the private answer key.
 - If a repair packet is sent, fix only the named defect and emit a new version.
 
+## Missing inputs and mappings
+
+- Before you stop on a missing input or mapping (for example which value of a flag means "on", or which code is which site), check the public schema, brief and bundle files in the packet. If they settle it, write `DERIVED: <item> from <path>: <how>`, use it, and finish the analysis.
+- Stop only if the public files do not settle it. Then write one `MISSING INPUT: <item>` line per item and say which files you checked. The operator re-checks them before accepting the stop, and escalates to the owner only an item they do not settle.
+
+## Descriptive rates
+
+- When the design compares groups, compute and report each group's rate and the difference, labeled descriptive or associational, not causal.
+
 ## Fixtures first
 
 - A script is done only when it passes **every sealed fixture** in the declared environment. Run the fixtures before the full data. If the fixtures fail, the script is not done; report the failure, do not call it done.

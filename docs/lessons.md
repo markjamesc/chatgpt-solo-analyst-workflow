@@ -20,3 +20,10 @@ Process lessons from the head-to-head benchmark run (2026-11-10; no case content
 - L9 | The produced-files list was left blank in replies | required `PRODUCED FILES:` format; the operator rejects a blank list | NOT YET WRITTEN
 - L10 | A leftover template note was sent in a packet | build sent packets as new versions from the template; never send `TEMPLATE` text or unfilled placeholders | NOT YET WRITTEN
 - L11 | The run was scored before the owner approved the finish package | the operator presents the sealed finish package for owner approval before scoring | none (operator rule)
+
+Process lessons from the second head-to-head case (2026-11-10; no case content or answers):
+
+- L12 | Stage 4 stopped and was closed as unresolved on a field-value meaning and an entity mapping that the public schema and brief already gave | check public files before any stop; record the derivation and continue; the operator re-checks before accepting a stop; only non-derivable items go to the owner | none (prompt and operator rule; Python GD exists in the Grok team repos)
+- L13 | A design rule banned rates, so a descriptive group comparison was never reported (seen in another version; applies here too) | labeled descriptive rates are allowed and expected | none (prompt rule)
+- L14 | A shape template's placeholder fixtures travelled with the design and failed only at the end (seen in another version) | never attach template JSON or placeholder references | none (operator rule)
+- L15 | Replaced packets kept counting as open (seen in another version) | mark them superseded with reason and time | none (operator rule)

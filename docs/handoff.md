@@ -25,6 +25,18 @@ PRODUCED FILES:
 ANSWERED <PACKET_ID>
 ```
 
+A reply that settled a missing item from the public files says so, one line per item, and keeps working:
+
+```text
+DERIVED: <item> from <public file path>: <how>
+```
+
+A reply that must stop because the public files do not settle an item says so, one line per item:
+
+```text
+MISSING INPUT: <item>
+```
+
 The standing instructions and the stage prompt from [../prompts/](../prompts/) are sent with the packet. They contain no case data.
 
 ## Operator duties
@@ -36,6 +48,10 @@ The standing instructions and the stage prompt from [../prompts/](../prompts/) a
 - If the chat has no R runtime, run its script **unchanged**, fixtures first, in that recorded environment (record R and package versions and the exact command), and return raw stdout, stderr and the exit status in a new packet. Do not edit the chat's code, and do not interpret the output for the chat.
 - At the end of Stage 5, present the sealed finish package (files and hashes) to the owner and record the owner's approval before scoring.
 - A correction is a new packet with a `-vN` suffix that names what it supersedes.
+- When a packet is replaced, mark the old ledger row with `superseded_by` (the newer packet id), `superseded_reason` and `superseded_at` (ISO timestamp with zone). Never edit or reseal the old packet; it is no longer counted as open.
+- **Before accepting a stop on `MISSING INPUT`**, check the public schema, brief and bundle files yourself and record the result in `artifacts/derivability.json` (item, files checked with hashes, derivable yes/no, derivation or reason). If the item is derivable, send a new `-vN` packet with the derivation and continue. Escalate to the owner only an item the public files do not settle. Never close a stage as unresolved on a derivable item.
+- List the public schema, brief and bundle files as inputs in every packet that may need them.
+- Never attach a template JSON (`*.example.json`) or any file holding placeholder references (all-zero or `NOT_SET` hashes) as an input.
 - Never overwrite or reseal a sent, reviewed, or frozen input.
 - Do not put the private answer key, peer-version work, or out-of-stage data in a packet.
 - Run the Python gates on the sealed reply. The chat does not run those gates.
@@ -44,6 +60,7 @@ The standing instructions and the stage prompt from [../prompts/](../prompts/) a
 ## Chat duties
 
 - Work only from the packet. If something needed is missing, stale, or truncated, say so in the reply instead of guessing.
+- Before stopping on a missing input or mapping, check the public files in the packet; record `DERIVED:` and continue if they settle it, and write `MISSING INPUT:` only if they do not.
 - End every reply with a non-blank `PRODUCED FILES:` list and `ANSWERED <PACKET_ID>` as the last line.
 - If the chat cannot run R, emit the script only and wait for the operator's run output. Never invent results.
 - Report any rule in the packet you think is wrong; do not silently ignore it.

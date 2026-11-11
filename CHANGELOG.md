@@ -2,6 +2,16 @@
 
 All notable changes to this design draft are recorded here. Dates are America/Chicago.
 
+## 0.1.2 — 2026-11-10
+
+Process fixes from the second head-to-head case (process only; no case content or answers):
+
+- **Check public files before stopping.** Before the chat stops, or the operator closes a stage as unresolved, on a missing input or mapping, the public schema, brief and bundle files are checked. Derivable items are recorded (`DERIVED: <item> from <path>: <how>`) and the work continues; only non-derivable items stop (`MISSING INPUT: <item>`) and go to the owner. The operator records each check in `artifacts/derivability.json` (`prompts/standing.md`, `prompts/stage-3-design.md`, `prompts/stage-4-execution.md`, `docs/stages.md`, `docs/handoff.md`).
+- **Descriptive rates allowed and expected**, labeled descriptive or associational, not causal; no blanket "no rates" rule (`prompts/standing.md`, stage 3/4/5 prompts).
+- **No template placeholders** (template `*.example.json`, all-zero or `NOT_SET` hashes) in packet inputs or design references.
+- **Supersession**: a replaced packet is marked `superseded_by`, `superseded_reason`, `superseded_at`; it stays sealed and is no longer counted as open.
+- Gate list gains GD (public-file derivability) and the new G0/G3/G5 checks. Gates in this repository are still **NOT IMPLEMENTED**; the operator does these checks by hand. New rules 15–18 and lessons L12–L15.
+
 ## 0.1.1 — 2026-11-10
 
 Process corrections from the Case B head-to-head run (process only; no case content or answers):

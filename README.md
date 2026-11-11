@@ -65,6 +65,9 @@ These are design requirements for this draft. They are not yet implemented as ex
 - **No writes to live systems** without owner approval. Default execution uses frozen, hashed extracts or an owner-approved read-only source. SQL, if used, is SELECT-only.
 - **Self-review is not a required independent review.** A self-check by this chat does not satisfy a review-coverage rule that needs a separate reviewer.
 - **A second computation by the same chat is not a guarantee of independent errors.**
+- **Check public files before stopping.** A missing input or mapping is checked against the public schema, brief and bundle files first; derivable items are recorded and the work continues; only non-derivable items stop and go to the owner.
+- **Descriptive rates are allowed and expected**, labeled descriptive or associational, not causal. No blanket "no rates" rule.
+- **No template placeholders in evidence**, and **replaced packets are marked superseded**.
 
 ## Run cap (head-to-head test)
 

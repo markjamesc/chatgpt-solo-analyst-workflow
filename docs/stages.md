@@ -14,6 +14,8 @@ Each step is: operator packs a prompt → the solo chat works → operator captu
 
 ## Notes
 
+- **Before any stop on a missing input.** The chat first checks the public schema, brief and bundle files in its packet. If they settle the item, it writes `DERIVED: <item> from <path>: <how>` and keeps working. Only if they do not does it stop with `MISSING INPUT: <item>`. The operator re-checks the public files and records the result in `artifacts/derivability.json` before accepting any stop: a derivable item goes back as a new `-vN` packet with the derivation; only a non-derivable item is escalated to the owner. No stage closes as "unresolved" on a derivable item.
+- Descriptive rates and differences are part of the expected Stage 4 and 5 results when the question compares groups. They are labeled descriptive or associational, never causal.
 - Stages 1–2 never see data values. Feasibility sees structure and quality only and cannot add or reshape questions.
 - Stage 4 order: any SQL source gates pass → the chat builds the R analysis (and optional SQL) → freeze → fixtures → operator checks consistency → release gate. A same-chat R vs SQL comparison is a consistency check, not an independent reconciliation.
 - If the chat has no R runtime, it emits the script only and waits. The operator runs it **unchanged** in a recorded environment (R and package versions), fixtures first, and returns raw stdout, stderr and the exit status in a new packet. The chat interprets only that output and never invents results. A script is done only when every sealed fixture passes in the declared environment.
